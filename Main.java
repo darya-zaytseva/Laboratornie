@@ -5,7 +5,7 @@ public class Main {
         System.out.println("Введите x: ");
         double x = in.nextDouble();
         if (Math.abs(x)>1)
-            System.out.println("Число меньше 1");
+            System.out.println("Число больше 1");
         else {
             double sum = 0;
             for (double n = 0; n <= x; n++) {
