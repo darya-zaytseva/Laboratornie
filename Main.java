@@ -1,58 +1,52 @@
 import java.util.Scanner;
-public class Main {
-    public static class Schet{
-        private double x;
-        private double a;
-        private double b;
-        public Schet(double x, double a, double b){
-            this.x=x;
-            this.a=a;
-            this.b=b;
-        }
-        public double Schet1(){
-            return 3*this.x+5;
-        }
-        public double Schet2(){
-            if(this.a==this.b){
-                System.out.println("Деление на ноль(");
-                return 0;
-            }
-            return (this.a+this.b)/(this.a-this.b);
-        }
-        public double Schet3(){
-            if (this.x==0||this.a==0||this.b==0){
-                System.out.println("Деление на ноль(");
-                return 0;
-            }
-            double primer = this.a*this.x/this.b;
-            int prim = (int)Math.round(primer);
-            return factorial(prim);
-        }
-        private double factorial(int prim){
-            if (prim<0){
-                System.out.println("Отрицательные числа не вводить(");
-                return 0;
-            }
-            double f = 1;
-            for (int i=1; i<=prim; i++){
-                f*=i;
-            }
-            return f;
-        }
+class Person
+{
+    String familiya;
+    String name;
+    String otchestvo;
+    String adres;
+    String telephon;
+    String karta;
+
+    public Person(String familiya, String name, String otchestvo, String adres, String telephon, String karta)
+    {
+        this.familiya = familiya;
+        this.name = name;
+        this.otchestvo = otchestvo;
+        this.adres = adres;
+        this.telephon = telephon;
+        this.karta = karta;
     }
-    public static void main(String[] args) {
-        Scanner scanner=new Scanner(System.in);
-        System.out.print("Введите значение x: ");
-        double x = scanner.nextDouble();
-        System.out.print("Введите значение a: ");
-        double a = scanner.nextDouble();
-        System.out.print("Введите значение b: ");
-        double b = scanner.nextDouble();
-        Schet one = new Schet(x, a, b);
-        Schet two = new Schet(x, a, b);
-        Schet three = new Schet(x, a, b);
-        System.out.println("Результат для y=3x+5: " + one.Schet1());
-        System.out.println("Результат для y=(a+b)/(a-b): " + two.Schet2());
-        System.out.println("Результат для y=(ax/b)!: " + three.Schet3());
+}
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner in = new Scanner(System.in);
+        Person[] persons = new Person[5];
+        persons[0] = new Person("Фролов", "Кирилл", "Владимирович", "Гагарина, 14", "88005553535", "12345");
+        persons[1] = new Person("Маркова", "Кира", "Романовна", "Кулакова, 88", "87776664422", "67890");
+        persons[2] = new Person("Рынденкова", "Даниил", "Петрович", "Победа, 9", "89379310018", "04321");
+        persons[3] = new Person("Зайцев", "Кирилл", "Максимович", "Шаманова, 53", "28354429885", "98765");
+        persons[4] = new Person("Чепыжова", "Лариса", "Константиновна", "Попова, 77", "52428139096", "12345");
+        String number = "12345";
+        Karta(persons, number);
+    }
+    public static void Karta(Person[] persons, String number)
+    {
+        int per = 0;
+        System.out.println("Пользователи с такими же номерами карт: \n");
+        for (Person person : persons)
+        {
+            if (person.karta.equals(number))
+            {
+                System.out.println(person.familiya + " " + person.name + " " + person.otchestvo);
+                per++;
+            }
+        }
+        if (per == 0)
+        {
+            System.out.println("Совпадений нет.");
+        }
     }
 }
